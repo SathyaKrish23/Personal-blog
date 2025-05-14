@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="blog-detail py-5">
+  <div class="container">
+    <!-- Blog Post Title -->
+    <h2 class="display-5 text-center mb-4">{{ blog.title }}</h2>
+
+    <!-- Blog Post Image -->
+    {% if blog.image %}
+    <div class="text-center mb-4">
+      <img src="{{ blog.image.url }}" class="img-fluid rounded" alt="{{ blog.title }}">
+    </div>
+    {% endif %}
+
+    <!-- Blog Post Content -->
+    <div class="content">
+      <p class="lead">{{ blog.excerpt }}</p>
+      <div class="blog-content">
+        {{ blog.content|safe }}
+      </div>
+    </div>
+
+    <!-- Back to Blogs Button -->
+    <div class="text-center mt-4">
+      <a href="{% url 'blog_list' %}" class="btn btn-primary btn-lg">Back to Blogs</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

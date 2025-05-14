@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if messages %}
+  <div class="alert alert-info">
+    {% for message in messages %}
+      <p>{{ message }}</p>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<section class="contact-page py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Contact Us</h2>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <!-- Card for Contact Form -->
+        <div class="card shadow-sm p-4">
+          <h4 class="card-title text-center mb-4">Get in Touch</h4>
+          <p class="card-text text-center mb-4">If you have any questions, feel free to reach out to us using the contact form below. We're happy to help!</p>
+
+          <form method="POST" action="{% url 'contact' %}">
+            {% csrf_token %}
+
+            <div class="mb-3">
+              <label for="id_name" class="form-label">Your Name</label>
+              <input type="text" name="name" class="form-control" id="id_name" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="id_email" class="form-label">Your Email</label>
+              <input type="email" name="email" class="form-control" id="id_email" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="id_message" class="form-label">Your Message</label>
+              <textarea name="message" class="form-control" id="id_message" rows="5" required></textarea>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <!-- Card for Office Details -->
+        <div class="card shadow-sm p-4 mt-4 mt-md-0">
+          <h4 class="card-title text-center mb-4">Our Office</h4>
+          <p class="card-text text-center mb-4">Feel free to visit us or contact us via the following:</p>
+
+          <ul class="list-unstyled">
+            <li><strong>Address:</strong> 1234 Street Name, City, Country</li>
+            <li><strong>Phone:</strong> +1 (555) 123-4567</li>
+            <li><strong>Email:</strong> <a href="mailto:contact@blog.com">contact@blog.com</a></li>
+          </ul>
+
+          <h5 class="text-center mt-4">Our Location</h5>
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.0107288015625!2d-122.08424958469351!3d37.42199977982255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fbbd2b2e9f4b1%3A0x6049c877c3b34d58!2sGoogleplex!5e0!3m2!1sen!2sus!4v1623438237429!5m2!1sen!2sus"
+                    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
